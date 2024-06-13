@@ -1,8 +1,12 @@
 package org.example.Swing;
 
 import com.sun.jdi.VMCannotBeModifiedException;
+import org.example.Swing.CustomComponents.GSplitPane;
+import org.example.Swing.CustomComponents.PPasswordField;
+import org.example.Swing.CustomComponents.PTextField;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class Menu extends JFrame {
@@ -17,30 +21,29 @@ public class Menu extends JFrame {
     }
     public void initializeComponents()
     {
-        JSplitPane panel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        GSplitPane panel = new GSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         JPanel left = new JPanel();
         JPanel right = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         JLabel label = new JLabel("Login");
         JLabel loginLabel = new JLabel("Login:");
-        JTextField loginField = new JTextField(20);
+        PTextField loginField = new PTextField("Login");
         JLabel passwordLabel = new JLabel("Password:");
-        JPasswordField passwordField = new JPasswordField(20);
+        PPasswordField passwordField = new PPasswordField("Password");
         JButton loginButton = new JButton("Login");
 
-
-        JSeparator loginSeparator = new JSeparator();
-        JSeparator passwordSeparator = new JSeparator();
 
         panel.setResizeWeight(0.4);
         panel.setEnabled(false);
         panel.setDividerSize(0);
-
+        left.setOpaque(false);
+        right.setOpaque(false);
         label.setFont(new Font("Lato", Font.PLAIN, 44));
 
-        left.setBackground(Color.black);
-        right.setBackground(Color.pink);
+
+
+
 
 
         gbc.insets = new Insets(10, 10, 10, 10); // Odstępy między komponentami
@@ -56,9 +59,7 @@ public class Menu extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         right.add(loginField, gbc);
 
-        gbc.gridy++;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        right.add(loginSeparator, gbc);
+
 
         gbc.gridy++;
         right.add(passwordLabel, gbc);
@@ -67,9 +68,6 @@ public class Menu extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         right.add(passwordField, gbc);
 
-        gbc.gridy++;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        right.add(passwordSeparator, gbc);
 
         gbc.gridy++;
         gbc.fill = GridBagConstraints.NONE;

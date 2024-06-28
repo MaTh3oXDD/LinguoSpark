@@ -1,5 +1,6 @@
 package org.example.Swing;
 
+import org.example.Swing.CustomComponents.CustomPanelMenu;
 import org.example.Swing.CustomComponents.GSplitPane;
 import org.example.Swing.CustomComponents.PPasswordField;
 import org.example.Swing.CustomComponents.PTextField;
@@ -10,17 +11,22 @@ import java.awt.*;
 
 public class Menu extends JFrame {
     public Menu() {
+
         super("LinguoSpark");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.setSize(800, 600);
-        this.setVisible(true);
         setLayout(new BorderLayout());
         initializeComponents();
+        this.setVisible(true);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+        setIconImage(icon.getImage());
+
     }
 
     public void initializeComponents() {
         GSplitPane panel = new GSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        JPanel left = new JPanel();
+        JPanel left = new CustomPanelMenu();
         JPanel right = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 

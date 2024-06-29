@@ -6,15 +6,17 @@ import org.example.Swing.CustomComponents.PPasswordField;
 import org.example.Swing.CustomComponents.PTextField;
 
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class Menu extends JFrame {
-    public Menu() {
+    private ImageIcon dabIcon;
+    private JLabel dabLabel;
 
+    public Menu() {
         super("LinguoSpark");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.setSize(800, 600);
         setLayout(new BorderLayout());
         initializeComponents();
@@ -22,6 +24,14 @@ public class Menu extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
         setIconImage(icon.getImage());
 
+        // Add ComponentListener to the frame
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                // Update components when the frame is resized
+                updateComponents();
+            }
+        });
     }
 
     public void initializeComponents() {
@@ -50,10 +60,26 @@ public class Menu extends JFrame {
         label.setFont(new Font("Lato", Font.PLAIN, 70));
         loginLabel.setFont(new Font("Lato", Font.PLAIN, 16));
         passwordLabel.setFont(new Font("Lato", Font.PLAIN, 16));
-        loginField.setPreferredSize(new Dimension(300, 30));  // Ustawienie preferowanego rozmiaru
-        passwordField.setPreferredSize(new Dimension(300, 30));  // Ustawienie preferowanego rozmiaru
+        loginField.setPreferredSize(new Dimension(300, 30));
+        passwordField.setPreferredSize(new Dimension(300, 30));
 
-        gbc.insets = new Insets(10, 10, 10, 10); // Odstępy między komponentami
+        try {
+            dabIcon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+            dabLabel = new JLabel();
+            updateImageSize();  // Initial image size setup
+
+            JPanel wrapperPanel = new JPanel(new BorderLayout());
+            wrapperPanel.setOpaque(false);
+            wrapperPanel.add(dabLabel, BorderLayout.WEST);
+
+            left.setLayout(new BorderLayout());
+            left.add(wrapperPanel, BorderLayout.SOUTH);
+        } catch (Exception e) {
+            System.out.println("Failed to load image");
+            e.printStackTrace();
+        }
+
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -85,4 +111,18 @@ public class Menu extends JFrame {
         this.add(panel, BorderLayout.CENTER);
     }
 
+    private void updateImageSize() {
+        int width = getWidth() / 4;
+        int height = width;  // Maintain aspect ratio
+        Image scaledImage = dabIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        dabLabel.setIcon(new ImageIcon(scaledImage));
+    }
+
+    public void updateComponents() {
+        // Logic for updating components when the frame is resized
+        // Example: you can rescale images, adjust component sizes, etc.
+        updateImageSize();
+        revalidate();
+        repaint();
+    }
 }

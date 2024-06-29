@@ -1,16 +1,15 @@
 package org.example.Swing;
 
-import org.example.Swing.CustomComponents.CustomPanelMenu;
-import org.example.Swing.CustomComponents.GSplitPane;
-import org.example.Swing.CustomComponents.PPasswordField;
-import org.example.Swing.CustomComponents.PTextField;
+import org.example.Swing.CustomComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class Menu extends JFrame {
+public class Menu extends JFrame{
     private ImageIcon dabIcon;
     private JLabel dabLabel;
 
@@ -23,8 +22,6 @@ public class Menu extends JFrame {
         this.setVisible(true);
         ImageIcon icon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
         setIconImage(icon.getImage());
-
-        // Add ComponentListener to the frame
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -32,6 +29,7 @@ public class Menu extends JFrame {
                 updateComponents();
             }
         });
+
     }
 
     public void initializeComponents() {
@@ -45,7 +43,11 @@ public class Menu extends JFrame {
         PTextField loginField = new PTextField("Login");
         JLabel passwordLabel = new JLabel("Password");
         PPasswordField passwordField = new PPasswordField("Password", 20);
-        JButton loginButton = new JButton("Login");
+        CButton loginButton = new CButton("Login");
+        CButton registerButton = new CButton("Register");
+        registerButton.addActionListener(e -> {new Register();
+        this.dispose();
+        });
 
         label.setForeground(Color.decode("#F5F4F5"));
         loginLabel.setForeground(Color.decode("#F5F4F5"));
@@ -60,6 +62,10 @@ public class Menu extends JFrame {
         label.setFont(new Font("Lato", Font.PLAIN, 70));
         loginLabel.setFont(new Font("Lato", Font.PLAIN, 16));
         passwordLabel.setFont(new Font("Lato", Font.PLAIN, 16));
+        loginButton.setFont(new Font("Lato", Font.PLAIN, 15));
+        loginButton.setPreferredSize(new Dimension(120, 40));
+        registerButton.setFont(new Font("Lato", Font.PLAIN, 15));
+        registerButton.setPreferredSize(new Dimension(120, 40));
         loginField.setPreferredSize(new Dimension(300, 30));
         passwordField.setPreferredSize(new Dimension(300, 30));
 
@@ -103,7 +109,12 @@ public class Menu extends JFrame {
 
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.CENTER;
-        right.add(loginButton, gbc);
+        // Create a panel to hold both buttons
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        buttonPanel.setOpaque(false);
+        buttonPanel.add(loginButton);
+        buttonPanel.add(registerButton);
+        right.add(buttonPanel, gbc);
 
         panel.setLeftComponent(left);
         panel.setRightComponent(right);
@@ -119,10 +130,9 @@ public class Menu extends JFrame {
     }
 
     public void updateComponents() {
-        // Logic for updating components when the frame is resized
-        // Example: you can rescale images, adjust component sizes, etc.
         updateImageSize();
         revalidate();
         repaint();
     }
+
 }

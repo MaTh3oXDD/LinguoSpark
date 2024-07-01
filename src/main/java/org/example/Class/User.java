@@ -1,10 +1,24 @@
 package org.example.Class;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    public User() {}
 
     public User(int id, String username, String password, String email) {
         this.id = id;

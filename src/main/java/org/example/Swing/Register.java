@@ -15,7 +15,7 @@ public class Register extends JFrame {
         setLayout(new BorderLayout());
         initializeComponents();
         this.setVisible(true);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
         setIconImage(icon.getImage());
     }
 
@@ -39,7 +39,7 @@ public class Register extends JFrame {
         CButton backButton = new CButton("Back");
 
         try {
-            dabIcon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+            dabIcon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
             dabLabel = new JLabel();
             updateImageSize();  // Initial image size setup
 

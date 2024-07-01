@@ -4,8 +4,6 @@ import org.example.Swing.CustomComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -20,7 +18,7 @@ public class Menu extends JFrame{
         setLayout(new BorderLayout());
         initializeComponents();
         this.setVisible(true);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
         setIconImage(icon.getImage());
         this.addComponentListener(new ComponentAdapter() {
             @Override
@@ -70,7 +68,7 @@ public class Menu extends JFrame{
         passwordField.setPreferredSize(new Dimension(300, 30));
 
         try {
-            dabIcon = new ImageIcon(getClass().getResource("/LinguoSpark.png"));
+            dabIcon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
             dabLabel = new JLabel();
             updateImageSize();  // Initial image size setup
 

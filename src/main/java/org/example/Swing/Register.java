@@ -59,6 +59,11 @@ public class Register extends JFrame {
             new Menu();
             this.dispose();
         });
+        registerButton.addActionListener(e -> {
+            new Menu();
+            this.dispose();
+        });
+
         label.setForeground(fontColor);
         usernameLabel.setForeground(fontColor);
         emailLabel.setForeground(fontColor);

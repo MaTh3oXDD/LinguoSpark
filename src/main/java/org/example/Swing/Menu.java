@@ -1,5 +1,6 @@
 package org.example.Swing;
 
+import org.example.Swing.ButtonFunction.Login;
 import org.example.Swing.CustomComponents.*;
 
 import javax.swing.*;
@@ -7,9 +8,11 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class Menu extends JFrame{
+public class Menu extends JFrame {
     private ImageIcon dabIcon;
     private JLabel dabLabel;
+    private PTextField loginField;
+    private PPasswordField passwordField;
 
     public Menu() {
         super("LinguoSpark");
@@ -27,7 +30,6 @@ public class Menu extends JFrame{
                 updateComponents();
             }
         });
-
     }
 
     public void initializeComponents() {
@@ -38,14 +40,17 @@ public class Menu extends JFrame{
 
         JLabel label = new JLabel("Login");
         JLabel loginLabel = new JLabel("Login");
-        PTextField loginField = new PTextField("Login");
+        loginField = new PTextField("Login");
         JLabel passwordLabel = new JLabel("Password");
-        PPasswordField passwordField = new PPasswordField("Password", 20);
+        passwordField = new PPasswordField("Password", 20);
         CButton loginButton = new CButton("Login");
         CButton registerButton = new CButton("Register");
-        registerButton.addActionListener(e -> {new Register();
-        this.dispose();
+
+        registerButton.addActionListener(e -> {
+            new Register();
+            this.dispose();
         });
+        loginButton.addActionListener(new Login(this));
 
         label.setForeground(Color.decode("#F5F4F5"));
         loginLabel.setForeground(Color.decode("#F5F4F5"));
@@ -74,7 +79,7 @@ public class Menu extends JFrame{
 
             JPanel wrapperPanel = new JPanel(new BorderLayout());
             wrapperPanel.setOpaque(false);
-            wrapperPanel.add(dabLabel, BorderLayout.WEST);
+            wrapperPanel.add(dabLabel, BorderLayout.SOUTH);
 
             left.setLayout(new BorderLayout());
             left.add(wrapperPanel, BorderLayout.SOUTH);
@@ -131,6 +136,15 @@ public class Menu extends JFrame{
         updateImageSize();
         revalidate();
         repaint();
+    }
+
+    // Metody getter dla pól tekstowych
+    public String getLoginText() {
+        return loginField.getText();
+    }
+
+    public String getPasswordText() {
+        return new String(passwordField.getPassword());
     }
 
 }

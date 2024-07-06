@@ -9,6 +9,11 @@ import java.awt.event.FocusListener;
 public class PPasswordField extends JPasswordField {
     private final String promptText;
 
+    @Override
+    public char[] getPassword() {
+        return super.getPassword();
+    }
+
     public PPasswordField(final String promptText, int width) {
         super(width);
         this.promptText = promptText;

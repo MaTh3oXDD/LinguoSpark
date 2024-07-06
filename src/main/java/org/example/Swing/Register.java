@@ -1,5 +1,6 @@
 package org.example.Swing;
 
+import org.example.Swing.ButtonFunction.RegisterAction;
 import org.example.Swing.CustomComponents.*;
 
 import javax.swing.*;
@@ -8,6 +9,9 @@ import java.awt.*;
 public class Register extends JFrame {
     private ImageIcon dabIcon;
     private JLabel dabLabel;
+    private PTextField usernameField;
+    private PTextField emailField;
+    private  PPasswordField passwordField;
     public Register() {
         super("LinguoSpark");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,11 +34,11 @@ public class Register extends JFrame {
 
         JLabel label = new JLabel("Register");
         JLabel usernameLabel = new JLabel("Username");
-        PTextField usernameField = new PTextField("Username");
+         usernameField = new PTextField("Username");
         JLabel emailLabel = new JLabel("Email");
-        PTextField emailField = new PTextField("Email");
+        emailField = new PTextField("Email");
         JLabel passwordLabel = new JLabel("Password");
-        PPasswordField passwordField = new PPasswordField("Password", 20);
+        passwordField = new PPasswordField("Password", 20);
         CButton registerButton = new CButton("Register");
         CButton backButton = new CButton("Back");
 
@@ -59,10 +63,7 @@ public class Register extends JFrame {
             new Menu();
             this.dispose();
         });
-        registerButton.addActionListener(e -> {
-            new Menu();
-            this.dispose();
-        });
+        registerButton.addActionListener(new RegisterAction(this));
 
         label.setForeground(fontColor);
         usernameLabel.setForeground(fontColor);
@@ -135,5 +136,17 @@ public class Register extends JFrame {
         int height = width;  // Maintain aspect ratio
         Image scaledImage = dabIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         dabLabel.setIcon(new ImageIcon(scaledImage));
+    }
+    public String getUsernameText()
+    {
+        return usernameField.getText();
+    }
+    public String getEmailText()
+    {
+        return emailField.getText();
+    }
+    public String getPasswordText()
+    {
+        return new String(passwordField.getPassword());
     }
 }

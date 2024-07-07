@@ -2,6 +2,7 @@ package org.example.Swing.ButtonFunction;
 
 import org.example.Class.Client;
 import org.example.Swing.Menu;
+import org.example.Swing.Words;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,6 +43,8 @@ public class Login implements ActionListener {
             if(username.equals(client.getUsername()) && password.equals(client.getPassword()))
             {
                 menu.dispose();
+                new Words();
+
             }
         }
         System.out.println(username+password);

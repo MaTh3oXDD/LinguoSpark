@@ -34,7 +34,7 @@ public class Register extends JFrame {
 
         JLabel label = new JLabel("Register");
         JLabel usernameLabel = new JLabel("Username");
-         usernameField = new PTextField("Username");
+        usernameField = new PTextField("Username");
         JLabel emailLabel = new JLabel("Email");
         emailField = new PTextField("Email");
         JLabel passwordLabel = new JLabel("Password");

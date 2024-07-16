@@ -16,6 +16,12 @@ public class RoundLabel extends JLabel {
         this.arcWidth = arcWidth;
         this.arcHeight = arcHeight;
         setOpaque(false); // Make sure the JLabel is not opaque
+        setFont(new Font("Arial", Font.BOLD, 20));
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setVerticalAlignment(SwingConstants.CENTER);
+        setPreferredSize(new Dimension(100, 35));
+        setMinimumSize(new Dimension(100, 35));
+        setMaximumSize(new Dimension(100, 35));
     }
 
     @Override

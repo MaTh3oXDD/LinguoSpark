@@ -22,22 +22,28 @@ public class RoundPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Background color
         g2.setColor(getBackground());
         g2.fill(createRoundShape());
+
+        // Dispose the graphics context to release resources
+        g2.dispose();
     }
 
     @Override
     protected void paintBorder(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Border color
         g2.setColor(getForeground());
         g2.draw(createRoundShape());
+
+        // Dispose the graphics context to release resources
+        g2.dispose();
     }
 
     private Shape createRoundShape() {
@@ -45,6 +51,7 @@ public class RoundPanel extends JPanel {
         int height = getHeight();
         Path2D path = new Path2D.Double();
 
+        // Start at the top-left corner
         path.moveTo(topLeftRadius, 0);
         path.lineTo(width - topRightRadius, 0);
         path.quadTo(width, 0, width, topRightRadius);

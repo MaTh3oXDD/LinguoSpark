@@ -50,7 +50,8 @@ public class Menu extends JFrame {
             new Register();
             this.dispose();
         });
-        loginButton.addActionListener(new Login(this));
+        
+        loginButton.addActionListener(new Login(this,getLoginText()));
 
         label.setForeground(Color.decode("#F5F4F5"));
         loginLabel.setForeground(Color.decode("#F5F4F5"));

@@ -1,11 +1,10 @@
 package org.example.Class;
 
-import org.example.Swing.Words;
+import org.example.Swing.App;
 
 public class Main {
     public static void main(String[] args) {
-
-       Words word = new Words();
+       App app = new App("Login");
 
     }
 }

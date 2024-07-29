@@ -62,4 +62,9 @@ public class GradientPanel extends JPanel {
         path.closePath();
         return path;
     }
+
+    @Override
+    public void setOpaque(boolean isOpaque) {
+        super.setOpaque(isOpaque);
+    }
 }

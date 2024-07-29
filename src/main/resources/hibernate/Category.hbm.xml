@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.Category" table="category">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name_category" type="string"/>
+        <set name="words" table="words" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="category_id"/>
+            </key>
+            <one-to-many class="com.example.Word"/>
+        </set>
+    </class>
+</hibernate-mapping>

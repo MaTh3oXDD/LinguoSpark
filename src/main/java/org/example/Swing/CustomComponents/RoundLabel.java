@@ -16,12 +16,13 @@ public class RoundLabel extends JLabel {
         this.arcWidth = arcWidth;
         this.arcHeight = arcHeight;
         setOpaque(false); // Make sure the JLabel is not opaque
-        setFont(new Font("Arial", Font.BOLD, 20));
+        setFont(new Font("Arial", Font.PLAIN, 20));
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
         setPreferredSize(new Dimension(100, 35));
         setMinimumSize(new Dimension(100, 35));
         setMaximumSize(new Dimension(100, 35));
+        setForeground(Color.decode("#F5F4F5"));
     }
 
     @Override
@@ -44,14 +45,5 @@ public class RoundLabel extends JLabel {
         g2.setClip(clip);
     }
 
-    @Override
-    protected void paintBorder(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // Optionally, you can paint a border here
-        g2.setColor(getForeground());
-        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arcWidth, arcHeight);
-    }
 
 }

@@ -1,9 +1,9 @@
-package org.example.Class;
+package org.example.Class.HibernateClass;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "client")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

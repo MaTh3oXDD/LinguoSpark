@@ -1,6 +1,6 @@
 package org.example.Swing.ButtonFunction;
 
-import org.example.Class.Client;
+import org.example.Class.HibernateClass.Client;
 import org.example.Swing.Menu;
 import org.example.Swing.Register;
 import org.hibernate.Session;

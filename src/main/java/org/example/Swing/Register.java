@@ -91,6 +91,8 @@ public class Register extends JFrame {
         buttonPanel.add(registerButton);
         buttonPanel.add(backButton);
 
+
+
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.gridx = 0;
         gbc.gridy = 0;

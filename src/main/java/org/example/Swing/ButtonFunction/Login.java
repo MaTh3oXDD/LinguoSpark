@@ -1,8 +1,8 @@
 package org.example.Swing.ButtonFunction;
 
-import org.example.Class.Client;
+import org.example.Class.HibernateClass.Client;
 import org.example.Swing.Menu;
-import org.example.Swing.Words;
+import org.example.Swing.App;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,10 +18,18 @@ import java.util.List;
 public class Login implements ActionListener {
 
     private final Menu menu;
+    private String username;
 
-    public Login(Menu menu) {
-        this.menu = menu;
+    public Login() {
+
+        menu = null;
     }
+    public Login(Menu menu,String username) {
+        this.menu = menu;
+        this.username=username;
+    }
+
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,8 +50,10 @@ public class Login implements ActionListener {
         for (Client client : clients) {
             if(username.equals(client.getUsername()) && password.equals(client.getPassword()))
             {
+
                 menu.dispose();
-                new Words();
+                username=client.getUsername();
+                new App(getUsername());
 
             }
         }
@@ -54,5 +64,9 @@ public class Login implements ActionListener {
         // Zamknij sesję i SessionFactory
         session.close();
         sessionFactory.close();
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

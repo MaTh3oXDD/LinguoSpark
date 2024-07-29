@@ -7,8 +7,19 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class PTextField extends JTextField {
+    private String promptText="";
+    public PTextField()
+    {
+
+        Design();
+    }
     public PTextField(final String promptText) {
         super(promptText);
+        this.promptText=promptText;
+        Design();
+    }
+    private void Design()
+    {
         setOpaque(false);
         setForeground(Color.decode("#F5F4F5"));
         setBorder(new MatteBorder(0, 0, 2, 0, Color.decode("#F5F4F5")));

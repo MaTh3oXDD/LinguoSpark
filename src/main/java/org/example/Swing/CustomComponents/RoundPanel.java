@@ -16,8 +16,9 @@ public class RoundPanel extends JPanel {
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
         setOpaque(false); // Make sure the panel is not opaque
-        setBackground(Color.WHITE); // Default background color
+
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -33,18 +34,7 @@ public class RoundPanel extends JPanel {
         g2.dispose();
     }
 
-    @Override
-    protected void paintBorder(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Border color
-        g2.setColor(getForeground());
-        g2.draw(createRoundShape());
-
-        // Dispose the graphics context to release resources
-        g2.dispose();
-    }
 
     private Shape createRoundShape() {
         int width = getWidth();
@@ -78,5 +68,10 @@ public class RoundPanel extends JPanel {
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
         repaint();
+    }
+
+    @Override
+    public void setOpaque(boolean isOpaque) {
+        super.setOpaque(isOpaque);
     }
 }

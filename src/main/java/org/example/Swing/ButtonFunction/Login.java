@@ -37,15 +37,12 @@ public class Login implements ActionListener {
         Metadata metadata = new MetadataSources(ssr).getMetadataBuilder().build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        // Pobierz dane z pól tekstowych
         String username = menu.getLoginText();
         String password = menu.getPasswordText();
 
-        // Zapisz nowego klienta
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        // Wyświetl wszystkie wpisy w tabeli Client
         List<Client> clients = session.createQuery("FROM Client", Client.class).list();
         for (Client client : clients) {
             if(username.equals(client.getUsername()) && password.equals(client.getPassword()))
@@ -61,7 +58,6 @@ public class Login implements ActionListener {
 
         session.getTransaction().commit();
 
-        // Zamknij sesję i SessionFactory
         session.close();
         sessionFactory.close();
     }

@@ -15,7 +15,7 @@ public class RoundLabel extends JLabel {
         this.backgroundColor = backgroundColor;
         this.arcWidth = arcWidth;
         this.arcHeight = arcHeight;
-        setOpaque(false); // Make sure the JLabel is not opaque
+        setOpaque(false);
         setFont(new Font("Arial", Font.PLAIN, 20));
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
@@ -30,18 +30,14 @@ public class RoundLabel extends JLabel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Paint the rounded background
         g2.setColor(backgroundColor);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);
 
-        // Set clipping region to ensure text is within rounded rectangle
         Shape clip = g2.getClip();
         g2.setClip(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
 
-        // Paint the text
         super.paintComponent(g);
 
-        // Restore the original clipping region
         g2.setClip(clip);
     }
 

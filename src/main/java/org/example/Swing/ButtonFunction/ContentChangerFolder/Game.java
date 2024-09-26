@@ -10,7 +10,7 @@ import java.util.Random;
 public class Game {
     private static String solution;
     private static int numberOfGuesses = 0;
-    private static int maxGuesses = 6; // Maximum incorrect guesses allowed
+    private static int maxGuesses = 6;
     private static JPanel drawingPanel;
 
     public Game(JPanel drawingPanel) {
@@ -83,7 +83,7 @@ public class Game {
             System.out.println("Litera '" + guessedLetter + "' znajduje się w słowie.");
         }
 
-        // Check for win or lose condition
+
         if (newDisplay.indexOf("_") == -1) {
             label.setText("Wygrałeś!");
             endGameWithMessage(label, "Wygrałeś!");
@@ -96,7 +96,7 @@ public class Game {
     private static void endGameWithMessage(JLabel label, String message) {
         label.setText(message);
 
-        // Timer to delay action after displaying the message
+
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,7 +104,7 @@ public class Game {
             }
         });
 
-        timer.setRepeats(false); // Ensure the timer only runs once
+        timer.setRepeats(false);
         timer.start();
     }
 
@@ -114,10 +114,6 @@ public class Game {
         setSolution(newWord);
         label.setText("_ ".repeat(newWord.length()).trim());
 
-        // Optionally, re-enable all buttons if they were disabled after use
-        // This depends on your implementation in the UI, if buttons were disabled
-        // You would iterate over all buttons and set them enabled again
-        // Example: button.setEnabled(true);
     }
 
     public static void updateHangmanDrawing() {

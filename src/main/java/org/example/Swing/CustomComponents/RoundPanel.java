@@ -15,7 +15,7 @@ public class RoundPanel extends JPanel {
         this.topRightRadius = topRightRadius;
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
-        setOpaque(false); // Make sure the panel is not opaque
+        setOpaque(false);
 
     }
 
@@ -26,11 +26,9 @@ public class RoundPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Background color
         g2.setColor(getBackground());
         g2.fill(createRoundShape());
 
-        // Dispose the graphics context to release resources
         g2.dispose();
     }
 
@@ -41,7 +39,6 @@ public class RoundPanel extends JPanel {
         int height = getHeight();
         Path2D path = new Path2D.Double();
 
-        // Start at the top-left corner
         path.moveTo(topLeftRadius, 0);
         path.lineTo(width - topRightRadius, 0);
         path.quadTo(width, 0, width, topRightRadius);
@@ -61,7 +58,6 @@ public class RoundPanel extends JPanel {
         return new Dimension(200, 200);
     }
 
-    // Optional: setters to change the radius values
     public void setCornerRadii(int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius) {
         this.topLeftRadius = topLeftRadius;
         this.topRightRadius = topRightRadius;

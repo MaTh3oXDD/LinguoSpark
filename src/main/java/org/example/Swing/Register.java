@@ -45,7 +45,7 @@ public class Register extends JFrame {
         try {
             dabIcon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
             dabLabel = new JLabel();
-            updateImageSize();  // Initial image size setup
+            updateImageSize();
 
             JPanel wrapperPanel = new JPanel(new BorderLayout());
             wrapperPanel.setOpaque(false);
@@ -58,7 +58,6 @@ public class Register extends JFrame {
             e.printStackTrace();
         }
 
-        // Add action listener to the back button
         backButton.addActionListener(e -> {
             new Menu();
             this.dispose();
@@ -135,7 +134,7 @@ public class Register extends JFrame {
     }
     private void updateImageSize() {
         int width = getWidth() / 4;
-        int height = width;  // Maintain aspect ratio
+        int height = width;
         Image scaledImage = dabIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         dabLabel.setIcon(new ImageIcon(scaledImage));
     }

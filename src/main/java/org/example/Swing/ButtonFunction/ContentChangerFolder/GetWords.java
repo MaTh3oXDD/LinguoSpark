@@ -28,10 +28,8 @@ public class GetWords {
         ResultSet resultSet = null;
 
         try {
-            // Ustawienie połączenia z bazą danych
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/linguospark", "root", "");
 
-            // Zapytanie SQL do pobrania kategorii i słów
             String query = "SELECT c.id as category_id, c.name_category, w.id as word_id, w.ang, w.pol " +
                     "FROM category c " +
                     "JOIN words w ON c.id = w.category_id ";
@@ -53,7 +51,6 @@ public class GetWords {
 
             Random random = new Random();
 
-            // Jeśli kategoria ma słowa, wybierz losowe słowo
             if (!words.isEmpty()) {
                 String[] randomWord = words.get(random.nextInt(words.size()));
                 System.out.println("Category ID: " + categoryId);
@@ -76,7 +73,6 @@ public class GetWords {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Zamknięcie zasobów
             try {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();

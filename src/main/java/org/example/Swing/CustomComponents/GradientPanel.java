@@ -15,8 +15,8 @@ public class GradientPanel extends JPanel {
         this.topRightRadius = topRightRadius;
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
-        setOpaque(false); // Make sure the panel is not opaque
-        setBackground(Color.WHITE); // Default background color
+        setOpaque(false);
+        setBackground(Color.WHITE);
     }
 
     @Override
@@ -30,17 +30,13 @@ public class GradientPanel extends JPanel {
         Color color2 = Color.decode("#a7a8a7");
         GradientPaint gp = new GradientPaint(0, 0, color1, w, h, color2);
 
-        // Create the rounded shape
         Shape roundShape = createRoundShape();
 
-        // Clip the graphics context to the rounded shape
         g2d.setClip(roundShape);
 
-        // Fill the rounded shape with the gradient
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, w, h);
 
-        // Dispose the graphics context to release resources
         g2d.dispose();
     }
 

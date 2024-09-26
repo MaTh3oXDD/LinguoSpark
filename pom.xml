@@ -43,7 +43,16 @@
             <version>8.0.27</version>
             <scope>runtime</scope>
         </dependency>
-
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.1</version>
+        </dependency>
         <!-- JLayer - Audio library dependencies -->
         <dependency>
             <groupId>javazoom</groupId>
@@ -63,6 +72,11 @@
             <version>${spring.boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,6 +90,12 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
             <!-- Maven Jar Plugin -->
@@ -92,8 +112,9 @@
                 <version>3.3.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
+                </configuration> <!-- Brakujące zamknięcie tagu -->
+            </plugin> <!-- Brakujące zamknięcie tagu -->
         </plugins>
     </build>
+
 </project>

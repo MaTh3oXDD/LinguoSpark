@@ -19,10 +19,8 @@ public class Statistic {
         ResultSet resultSet = null;
 
         try {
-            // Ustawienie połączenia z bazą danych
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/linguospark", "root", "");
 
-            // Zapytanie SQL do pobrania danych statystycznych
             String query = "SELECT c.username, cat.name_category, SUM(e.error_count) AS total_errors " +
                     "FROM client c " +
                     "INNER JOIN errors e ON c.id = e.client_id " +
@@ -33,21 +31,18 @@ public class Statistic {
                     "ORDER BY c.username, cat.name_category";
 
             statement = connection.prepareStatement(query);
-            statement.setString(1, username); // Ustawienie parametru zapytania
+            statement.setString(1, username);
             resultSet = statement.executeQuery();
 
-            // Tworzenie listy do przechowywania danych do wyświetlenia w JTable
             ArrayList<Object[]> data = new ArrayList<>();
             while (resultSet.next()) {
                 String user = resultSet.getString("username");
                 String category = resultSet.getString("name_category");
                 int totalErrors = resultSet.getInt("total_errors");
 
-                // Dodajemy dane do listy
                 data.add(new Object[]{user, category, totalErrors});
             }
 
-            // Tworzenie modelu tabeli z zebranymi danymi
             String[] columnNames = {"Username", "Category", "Total Errors"};
             Object[][] tableData = data.toArray(new Object[0][]);
             table.setModel(new javax.swing.table.DefaultTableModel(tableData, columnNames));
@@ -55,7 +50,6 @@ public class Statistic {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Zamknięcie zasobów
             try {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();

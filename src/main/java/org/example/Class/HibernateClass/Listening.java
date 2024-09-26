@@ -16,23 +16,19 @@ public class Listening {
     @Column(name = "answer", nullable = false)
     private String answer;
 
-    // No-argument constructor (required by JPA)
     public Listening() {}
 
-    // Constructor without ID (ID is auto-generated)
     public Listening(String name, String answer) {
         this.name = name;
         this.answer = answer;
     }
 
-    // Constructor with all fields (including ID)
     public Listening(int id, String name, String answer) {
         this.id = id;
         this.name = name;
         this.answer = answer;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

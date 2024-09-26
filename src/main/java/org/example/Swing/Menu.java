@@ -26,7 +26,7 @@ public class Menu extends JFrame {
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                // Update components when the frame is resized
+
                 updateComponents();
             }
         });
@@ -76,7 +76,7 @@ public class Menu extends JFrame {
         try {
             dabIcon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
             dabLabel = new JLabel();
-            updateImageSize();  // Initial image size setup
+            updateImageSize();
 
             JPanel wrapperPanel = new JPanel(new BorderLayout());
             wrapperPanel.setOpaque(false);
@@ -113,7 +113,6 @@ public class Menu extends JFrame {
 
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.CENTER;
-        // Create a panel to hold both buttons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         buttonPanel.setOpaque(false);
         buttonPanel.add(loginButton);
@@ -128,7 +127,7 @@ public class Menu extends JFrame {
 
     private void updateImageSize() {
         int width = getWidth() / 4;
-        int height = width;  // Maintain aspect ratio
+        int height = width;
         Image scaledImage = dabIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         dabLabel.setIcon(new ImageIcon(scaledImage));
     }
@@ -139,7 +138,6 @@ public class Menu extends JFrame {
         repaint();
     }
 
-    // Metody getter dla pól tekstowych
     public String getLoginText() {
         return loginField.getText();
     }

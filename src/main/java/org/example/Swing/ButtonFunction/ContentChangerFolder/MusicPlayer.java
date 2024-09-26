@@ -18,7 +18,7 @@ public class MusicPlayer {
     private Thread playThread;
 
     public MusicPlayer(JPanel targetPanel) {
-        this.currentTrackPath = getRandomMusicFile(); // Get a random music file path
+        this.currentTrackPath = getRandomMusicFile();
         showMusicPlayer(targetPanel);
     }
 
@@ -26,21 +26,18 @@ public class MusicPlayer {
         targetPanel.removeAll();
         targetPanel.setLayout(new BorderLayout());
 
-        // Panel do odtwarzania muzyki
         JPanel musicPlayerPanel = new JPanel(new BorderLayout());
         JLabel musicLabel = new JLabel("Music Player");
         musicLabel.setFont(new Font("Arial", Font.BOLD, 30));
         musicLabel.setHorizontalAlignment(SwingConstants.CENTER);
         musicPlayerPanel.add(musicLabel, BorderLayout.NORTH);
 
-        // Music player controls panel
         JPanel playerControlsPanel = new JPanel();
         playerControlsPanel.setLayout(new BoxLayout(playerControlsPanel, BoxLayout.Y_AXIS));
         playerControlsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         musicPlayerPanel.add(playerControlsPanel, BorderLayout.CENTER);
 
-        // Panel dolny z przyciskami
         JPanel bottomPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -48,14 +45,12 @@ public class MusicPlayer {
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.SOUTH;
 
-        // Text field for user input
         JTextField answerField = new JTextField();
         answerField.setFont(new Font("Arial", Font.PLAIN, 20));
-        answerField.setPreferredSize(new Dimension(100,100)); // 90% width, max 30px height
-        answerField.setMaximumSize(new Dimension(100,100)); // 90% width, max 30px height
+        answerField.setPreferredSize(new Dimension(100,100));
+        answerField.setMaximumSize(new Dimension(100,100));
         bottomPanel.add(answerField, gbc);
 
-        // Przycisk "Play"
         gbc.gridy = 2;
         gbc.gridx = 0;
         JButton playButton = new JButton("Play");
@@ -69,7 +64,6 @@ public class MusicPlayer {
         stopButton.addActionListener(e -> stopMusic());
         bottomPanel.add(stopButton, gbc);
 
-        // Dodanie paneli do targetPanel
         targetPanel.add(musicPlayerPanel, BorderLayout.NORTH);
         targetPanel.add(bottomPanel, BorderLayout.SOUTH);
 
@@ -122,7 +116,7 @@ public class MusicPlayer {
             if (resultSet.next()) {
                 trackPath = "src/main/resources/img/" + resultSet.getString("name");
                 String answer = resultSet.getString("answer");
-                System.out.println("Answer: " + answer); // Display the answer
+                System.out.println("Answer: " + answer);
             }
 
         } catch (Exception e) {

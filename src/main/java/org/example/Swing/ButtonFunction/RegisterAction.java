@@ -27,12 +27,10 @@ public class RegisterAction implements ActionListener {
         Metadata metadata = new MetadataSources(ssr).getMetadataBuilder().build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        // Pobierz dane z pól tekstowych
         String username = register.getUsernameText();
         String email = register.getEmailText();
         String password = register.getPasswordText();
 
-        // Zapisz nowego klienta
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Client client = new Client();
@@ -43,7 +41,6 @@ public class RegisterAction implements ActionListener {
         transaction.commit();
         System.out.println("zapisane");
 
-        // Zamknij sesję i SessionFactory
         session.close();
         sessionFactory.close();
         new Menu();

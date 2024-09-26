@@ -23,9 +23,8 @@ public class CButton extends JButton {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Fill the button with blue color
-        g2.setColor(new Color(0, 64, 143)); // Blue color
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20); // Rounded corners with radius 20
+        g2.setColor(new Color(0, 64, 143));
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
 
         super.paintComponent(g2);
         g2.dispose();

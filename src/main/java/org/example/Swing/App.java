@@ -26,7 +26,6 @@ public class App extends JFrame {
     }
 
     public void initializeComponent() {
-        // Create the main split pane
 
         JSplitPane panel = new GSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         RoundPanel left = new RoundPanel(0, 50, 0, 50);
@@ -68,9 +67,8 @@ public class App extends JFrame {
             }
         });
         dabIcon = new ImageIcon(getClass().getResource("/img/LinguoSpark.png"));
-        dabLabel = new JLabel(scaleIcon(dabIcon, 100, 100));  // Skaluj ikonę
+        dabLabel = new JLabel(scaleIcon(dabIcon, 100, 100));
 
-        // Ustawienia dla etykiety "LinguoSpark"
         linguoSparkLabel.setFont(new Font("Arial", Font.BOLD, 40));
         linguoSparkLabel.setForeground(Color.decode("#545454"));
         linguoSparkLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,34 +78,28 @@ public class App extends JFrame {
         panel.setEnabled(false);
         panel.setDividerSize(0);
 
-        // Set background colors
-        left.setBackground(Color.decode("#164175")); // Set the desired background color
-        right.setBackground(new Color(0, 0, 0, 0)); // Transparent background color
-        topMenu.setBackground(Color.decode("#164175")); // Match the left panel background
-        bottomMenu.setBackground(Color.decode("#164175")); // Match the left panel background
+        left.setBackground(Color.decode("#164175"));
+        right.setBackground(new Color(0, 0, 0, 0));
+        topMenu.setBackground(Color.decode("#164175"));
+        bottomMenu.setBackground(Color.decode("#164175"));
 
-        // Set layouts for the sub-panels
         topMenu.setLayout(new GridBagLayout());
         bottomMenu.setLayout(new GridBagLayout());
 
-        // Add GridBagConstraints for the sub-panels in the main panel (left)
         GridBagConstraints gbcMain = new GridBagConstraints();
         gbcMain.gridx = 0;
         gbcMain.gridy = 0;
         gbcMain.weightx = 1.0;
 
-        // Add topMenu to the main panel (left) with 90% height
         gbcMain.weighty = 0.9;
         gbcMain.anchor = GridBagConstraints.NORTH;
         left.add(topMenu, gbcMain);
 
-        // Add bottomMenu to the main panel (left) with 10% height
         gbcMain.gridy = 1;
         gbcMain.weighty = 0.1;
         gbcMain.anchor = GridBagConstraints.SOUTH;
         left.add(bottomMenu, gbcMain);
 
-        // Configure GridBagConstraints for the title label
         GridBagConstraints gbcTitle = new GridBagConstraints();
         gbcTitle.gridx = 0;
         gbcTitle.gridy = 0;
@@ -118,7 +110,6 @@ public class App extends JFrame {
         gbcTitle.fill = GridBagConstraints.HORIZONTAL;
         topMenu.add(linguoSparkLabel, gbcTitle);
 
-        // Add a margin of 40px between the title label and the other labels
         GridBagConstraints gbcSpacer = new GridBagConstraints();
         gbcSpacer.gridx = 0;
         gbcSpacer.gridy = 1;
@@ -129,7 +120,6 @@ public class App extends JFrame {
         gbcSpacer.fill = GridBagConstraints.HORIZONTAL;
         topMenu.add(Box.createVerticalStrut(40), gbcSpacer);
 
-        // Configure GridBagConstraints for the rest of the labels
         GridBagConstraints gbcLabels = new GridBagConstraints();
         gbcLabels.gridx = 0;
         gbcLabels.gridy = GridBagConstraints.RELATIVE;
@@ -139,25 +129,22 @@ public class App extends JFrame {
         gbcLabels.anchor = GridBagConstraints.NORTH;
         gbcLabels.fill = GridBagConstraints.NONE;
 
-        // Add labels to topMenu with constraints
         topMenu.add(menuLabel, gbcLabels);
         topMenu.add(statisticLabel, gbcLabels);
         topMenu.add(gameLabel, gbcLabels);
         topMenu.add(listeningLabel, gbcLabels);
 
-        // Configure GridBagConstraints for the dabLabel to be at the bottom
         GridBagConstraints gbcImage = new GridBagConstraints();
         gbcImage.gridx = 0;
         gbcImage.gridy = 0;
         gbcImage.weightx = 1.0;
         gbcImage.weighty = 1.0;
         gbcImage.anchor = GridBagConstraints.SOUTH;
-        gbcImage.fill = GridBagConstraints.NONE;  // To prevent stretching
+        gbcImage.fill = GridBagConstraints.NONE;
         bottomMenu.add(dabLabel, gbcImage);
 
         bottomMenu.setOpaque(false);
 
-        // Configure GridBagConstraints for rightBackground
         GridBagConstraints gbcRightBackground = new GridBagConstraints();
         gbcRightBackground.gridx = 0;
         gbcRightBackground.gridy = 0;
@@ -168,15 +155,12 @@ public class App extends JFrame {
         gbcRightBackground.fill = GridBagConstraints.BOTH;
         right.add(rightBackground, gbcRightBackground);
 
-        // Set proportions for the split pane
         panel.setLeftComponent(left);
         panel.setRightComponent(right);
 
-        // Add the split pane to JFrame
         this.add(panel, BorderLayout.CENTER);
     }
 
-    // Metoda do skalowania obrazu
     private ImageIcon scaleIcon(ImageIcon icon, int width, int height) {
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
